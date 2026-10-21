@@ -1,0 +1,45 @@
+[project]
+name = "lin-ode"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "scipy>=1.17.1",
+    "sympy>=1.14.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = true
+
+[tool.docformatter]
+# match ruff's line length so the two formatters agree
+wrap-summaries = 88
+# 0 disables description rewrapping: docstring bodies here hold markdown tables and
+# aligned blocks, and reflowing them to a column runs the rows into one another.
+wrap-descriptions = 0
+
+[tool.pyright]
+# the same scope docformatter uses: the shipped library and its tests. ``docs/`` is a
+# figure script that imports matplotlib from the docs group, which typecheck never installs.
+include = ["lin_ode", "tests"]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.411",
+    "ruff>=0.15.20",
+    "pytest>=9.1.1",
+    "docformatter>=1.7.8",
+]
+docs = [
+    "jupyter>=1.1.1",
+    "matplotlib>=3.11.0",
+    "sphinx>=8.1",
+    "furo>=2024.8.6",
+    "myst-nb>=1.1",
+    "sphinx-copybutton>=0.5.2",
+]

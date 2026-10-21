@@ -1,0 +1,63 @@
+/* Inline code is orange, so an identifier is distinguishable from prose at a glance.
+   Two shades, because Furo serves a light and a dark palette. */
+:root {
+  --lin-ode-code: #b4531a;
+}
+code.docutils.literal,
+code.docutils.literal span.pre {
+  color: var(--lin-ode-code);
+}
+body[data-theme="dark"] {
+  --lin-ode-code: #f0913f;
+}
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme="light"]) {
+    --lin-ode-code: #f0913f;
+  }
+}
+
+/* Report pages: dense derivations, so give the text room and the maths less weight.
+   Scoped to the reports tree -- the tutorials and API pages are already comfortable. */
+.report-page {
+  --lin-ode-math-scale: 0.92;
+}
+.report-page {
+  line-height: 1.75;
+}
+.report-page p,
+.report-page li {
+  margin-bottom: 0.9rem;
+}
+.report-page li > p {
+  margin-bottom: 0.5rem;
+}
+/* Display maths: smaller than the body, and breathing room above and below. A long
+   `aligned` chain overflows on a narrow window, so it scrolls in its own box rather
+   than widening the page. */
+.report-page div.math {
+  font-size: calc(1em * var(--lin-ode-math-scale));
+  margin: 1.6rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.2rem 0;
+}
+.report-page span.math {
+  font-size: calc(1em * var(--lin-ode-math-scale));
+}
+/* Entry tables are mostly maths; the default cell padding makes them tall and airy in
+   the wrong direction, so tighten the rows and shrink the maths a little further. */
+.report-page table.docutils td,
+.report-page table.docutils th {
+  padding: 0.35rem 0.7rem;
+  line-height: 1.5;
+}
+.report-page table.docutils span.math {
+  font-size: 0.88em;
+}
+.report-page h2 {
+  margin-top: 2.6rem;
+}
+.report-page h3,
+.report-page h4 {
+  margin-top: 2rem;
+}

@@ -1,0 +1,16 @@
+CLAUDE.md
+.claude/
+__pycache__
+.venv
+.pytest_cache
+graphify-out/
+.DS_Store
+*.html
+*.mmd
+*.png
+# the generated algorithm figures are part of the docs
+!notebooks/figures/*.png
+*.npz
+CLAUDE.local.md
+docs/_build/
+docs/_generated/

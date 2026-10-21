@@ -1,0 +1,17 @@
+name: Docstrings
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  docstrings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-python-uv
+
+      - name: Run docformatter
+        run: uv run docformatter --check --diff -r lin_ode/ tests/
